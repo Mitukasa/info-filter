@@ -219,7 +219,7 @@ Agent 倾向于给出"看起来完整"的答案，即使：
 
 ```text
 请帮我安装这个 skill：
-https://github.com/yxb8131/info-filter
+https://github.com/Mitukasa/info-filter
 ```
 
 你的 AI 助手会自动完成安装。
@@ -228,17 +228,17 @@ https://github.com/yxb8131/info-filter
 
 ```bash
 # 使用 npx（支持 Claude Code、Cursor 等多种 agent）
-npx skills add yxb8131/info-filter -g
+npx skills add Mitukasa/info-filter -g
 
 # 或直接克隆到你的 skills 目录
-git clone https://github.com/yxb8131/info-filter.git ~/.claude/skills/info-filter
+git clone https://github.com/Mitukasa/info-filter.git ~/.claude/skills/info-filter
 ```
 
 ### 方法 3：手动安装
 
 ```bash
 # 1. 克隆仓库
-git clone https://github.com/yxb8131/info-filter.git
+git clone https://github.com/Mitukasa/info-filter.git
 
 # 2. 复制到 Claude Code 的 skills 目录
 cp -r info-filter ~/.claude/skills/
@@ -347,8 +347,8 @@ MIT
 ## 💬 反馈
 
 如果你在使用过程中发现任何问题，或者有改进建议，欢迎：
-- 提交 [Issue](https://github.com/yxb8131/info-filter/issues)
-- 参与 [Discussion](https://github.com/yxb8131/info-filter/discussions)
+- 提交 [Issue](https://github.com/Mitukasa/info-filter/issues)
+- 参与 [Discussion](https://github.com/Mitukasa/info-filter/discussions)
 
 ---
 

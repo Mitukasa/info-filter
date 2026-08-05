@@ -219,7 +219,7 @@ In Claude Code, Cursor, Codex, or any AI agent that supports skills, just say:
 
 ```text
 Please help me install this skill:
-https://github.com/yxb8131/info-filter
+https://github.com/Mitukasa/info-filter
 ```
 
 Your agent will handle the installation automatically.
@@ -228,17 +228,17 @@ Your agent will handle the installation automatically.
 
 ```bash
 # Using npx (supports Claude Code, Cursor, and other agents)
-npx skills add yxb8131/info-filter -g
+npx skills add Mitukasa/info-filter -g
 
 # Or clone directly to your skills directory
-git clone https://github.com/yxb8131/info-filter.git ~/.claude/skills/info-filter
+git clone https://github.com/Mitukasa/info-filter.git ~/.claude/skills/info-filter
 ```
 
 ### Method 3: Manual Installation
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/yxb8131/info-filter.git
+git clone https://github.com/Mitukasa/info-filter.git
 
 # 2. Copy to your Claude Code skills directory
 cp -r info-filter ~/.claude/skills/
