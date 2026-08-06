@@ -27,3 +27,5 @@ This folder contains real conversation comparisons showing the difference Info F
 1. Ask your AI agent: "AI副业月入过万是真的吗？" (or "Is it true that AI side hustles can earn $1500+/month?")
 2. Compare the output with and without Info Filter installed
 3. Notice the difference in source handling, bias detection, and conclusion quality
+
+Tested and verified by Claude Code on 2026-08-06
