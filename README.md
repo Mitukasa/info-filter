@@ -1,217 +1,10 @@
 🇺🇸 English | 🇨🇳 [中文](README.zh.md)
 
-# Info Filter — Information Credibility Filter Skill
+# Info Filter — Information Credibility Filter
 
 > Transform your AI Agent's research output from "search engine copy-paste" to "credible information analyst"
 
-## 🎯 核心问题
-
-当你让 AI Agent 帮你调研一个问题时，你得到的答案真的可靠吗？
-
-我们做了一个对照实验：让 Agent 搜索同一个问题——**"AI副业月入过万是真的吗？"**
-
-### 没有 Info Filter 的 Agent 输出：
-
-```
-结论：有人确实做到了月入过万，但不是"轻松"、"零门槛"
-
-真实收入数据：
-- 知乎用户：副业月入1.5万
-- 什么值得买用户：初期月入4300元，可复制放大到过万
-- 普通用户：月入五六千
-
-✅ 真正可行的方向：AI绘画接单、AI视频制作、AI写作服务...
-
-一句话总结：AI副业月入过万不是神话，但也不是神话般容易。
-```
-
-**看起来挺客观？但有几个致命问题：**
-
-1. ❌ **把极端案例当普遍现象** — "月入1.5万"和"月入4300"被并列展示，让人以为这是常态
-2. ❌ **没有分母数据** — 多少人尝试了？成功率多少？完全不提
-3. ❌ **来源可信度不分** — 知乎个人经历、平台统计数据、营销软文混在一起
-4. ❌ **主动搜索了反面证据吗？** — 看不到失败案例、骗局报道、统计数据
-5. ❌ **结论偏向乐观** — "有人确实做到了"暗示这是可复制的，实际上是极少数
-
-### 启用 Info Filter 后的 Agent 输出：
-
-```
-结论先行：极少数人能做到，大多数人月入不到1000元。
-宣传"月入过万"的内容90%以上是营销或幸存者偏差。
-
-📊 真实收入数据（多源交叉验证）
-┌────────────────────┬──────────────────────┬─────────────────────────────┐
-│      数据来源      │       收入水平       │           可信度            │
-├────────────────────┼──────────────────────┼─────────────────────────────┤
-│ 什么值得买平台数据 │ 月均897元，60%+不足  │ 🟢 高（平台统计数据）       │
-│                    │ 800元                │                             │
-├────────────────────┼──────────────────────┼─────────────────────────────┤
-│ 知乎作者1年实录    │ 年收4.7万（月均3900  │ 🟢 高（有具体月份明细）     │
-│                    │ 元）                 │                             │
-├────────────────────┼──────────────────────┼─────────────────────────────┤
-│ 某博主8个月轨迹    │ 800→3500→12000→      │ 🟡 中（可能幸存者偏差）     │
-│                    │ 35000元              │                             │
-├────────────────────┼──────────────────────┼─────────────────────────────┤
-│ YouTube - 月赚1.5w │ （已丢弃）           │ ⚫ D级：明显标题党          │
-└────────────────────┴──────────────────────┴─────────────────────────────┘
-
-🚩 幸存者偏差检测：
-1. 分母是多少？→ 什么值得买数据：月均897元，大多数人收入极低
-2. 失败者在哪里？→ 央视报道：AI训练营骗局受害者
-3. 成功案例有何特殊？→ 月入3.5万博主未说明原有粉丝基数
-
-📌 信息缺口（诚实披露）：
-- 具体失败率数据：没有找到大规模统计
-- 长期收入曲线：缺乏2年以上的跟踪数据
-```
-
-**关键差异：**
-
-| 维度 | 无 Info Filter | 有 Info Filter |
-|------|---------------|----------------|
-| **核心结论** | "有人能做到"（暗示可复制） | "极少数人能做到，大多数人<1000元" |
-| **数据来源** | 混合引用，不分可信度 | 分级标注（A/B/C/D + 🟢🟡🔴⚫） |
-| **幸存者偏差** | 未检测 | 主动追问分母、失败案例、特殊条件 |
-| **营销内容** | 未识别 | 红旗检测，D级内容直接丢弃 |
-| **反面证据** | 未主动搜索 | 搜索骗局报道、失败案例 |
-| **信息缺口** | 未披露 | 诚实说明"不知道什么" |
-| **对用户决策的影响** | 可能误导用户尝试 | 帮助用户建立合理预期 |
-
----
-
-## 🔥 Agent 信息搜索的 6 大致命缺陷
-
-通过大量实测，我们发现 AI Agent 在做信息搜索时普遍存在以下问题：
-
-### 1️⃣ 被垃圾营销信息污染
-
-搜索引擎前 3 页充斥着：
-- SEO 内容农场批量生产的低质文章
-- 伪装成评测的广告软文
-- 标题党引流内容
-
-**Agent 如果不加分辨地引用，就会把营销话术当事实。**
-
-**案例：** 搜索"AI副业赚钱"，前 10 条结果中 7 条是卖课广告，但 Agent 可能直接引用"月入过万"的说法。
-
----
-
-### 2️⃣ 信息未经验证就直接引用
-
-Agent 倾向于"搜到什么就说什么"，缺乏：
-- 多源交叉验证
-- 一手数据溯源
-- 数据可信度评估
-
-**案例：** 某个博客说"效率提升 300%"，Agent 直接引用，但不追问：测试方法是什么？样本量多少？对比基线是什么？
-
----
-
-### 3️⃣ 幸存者偏差普遍存在
-
-搜索结果中"成功案例"远多于"失败案例"，因为：
-- 成功者更愿意分享
-- 失败者沉默不语
-- 媒体偏爱戏剧性故事
-
-**Agent 如果不主动搜索反面证据，就会得出过度乐观的结论。**
-
-**案例：** 搜索"Cursor 编程效率"，全是"提升 10 倍"的分享，但没人说失败率和适用范围。
-
----
-
-### 4️⃣ 数据来源可信度不分
-
-Agent 把以下信息来源等同对待：
-- 官方文档（A 级）
-- 独立评测（B 级）
-- 个人博客（C 级）
-- 匿名帖子（D 级）
-
-**没有分级，用户无法判断哪些信息可信。**
-
----
-
-### 5️⃣ 缺乏反面证据搜索
-
-Agent 通常是"证实性搜索"——找到支持某个观点的证据就停止，不会：
-- 主动搜索"XX 的缺点"
-- 搜索"XX 失败案例"
-- 搜索"XX vs 竞品"的对比评测
-
-**结果：信息不对称，结论偏向单一视角。**
-
----
-
-### 6️⃣ 信息缺口不透明
-
-Agent 倾向于给出"看起来完整"的答案，即使：
-- 某些数据找不到一手来源
-- 某些说法无法验证
-- 某些领域缺乏研究
-
-**诚实的"我不知道"比"看起来完整的错误"更有价值。**
-
----
-
-## 💡 Info Filter 的解决方案
-
-### 📐 来源分级系统
-
-| 等级 | 说明 | 使用方式 |
-|------|------|----------|
-| **A 级** | 官方文档、权威媒体、一手数据 | 直接引用 |
-| **B 级** | 独立评测、知名社区讨论 | 需交叉验证 |
-| **C 级** | 个人博客、内容农场 | 仅作线索 |
-| **D 级** | 匿名内容、明显广告 | 直接丢弃 |
-
-### 🚩 营销软文红旗检测
-
-12 条具体红旗（语言/结构/技术），命中 ≥2 条判定为广告：
-- 全篇只说优点，零缺点
-- 极端对比词无数据支撑
-- 文末引导加微信/领券
-- 性能数据无测试方法说明
-- ...
-
-### 📊 幸存者偏差检测
-
-三个必问问题：
-1. **分母是多少？** — 成功率 = 成功数 / 总尝试数
-2. **失败案例在哪？** — 搜不到失败内容 = 信息被筛选过
-3. **这个案例特殊在哪？** — 起点、资源、时机是否可复制？
-
-### 🔢 数据可信度评分
-
-- 🟢 **高可信** — A 级来源 + 一手数据 + 可交叉验证
-- 🟡 **中可信** — B 级来源 或 间接数据
-- 🔴 **低可信** — C 级来源 或 无法验证
-- ⚫ **不可信** — D 级来源，丢弃
-
-### 📝 透明输出格式
-
-```markdown
-## 调研结论
-
-### 核心发现
-- 发现 1 [🟢高可信 — 来源：官方文档]
-- 发现 2 [🟡中可信 — 来源：独立评测，样本量较小]
-- 发现 3 [⚠️幸存者偏差风险 — 仅有成功案例]
-
-### 信息来源清单
-| 序号 | 来源 | 等级 | 可信度 | 备注 |
-|------|------|------|--------|------|
-| 1    | ...  | A    | 🟢     | ...  |
-| 2    | ...  | D    | ⚫     | 已丢弃：营销软文 |
-
-### 信息缺口（诚实披露）
-- XXX 数据未找到一手来源
-- 未能验证 XXX 说法
-```
-
----
-
-## 🚀 Installation
+## 🚀 Quick Install
 
 ### Method 1: Ask Your AI Agent (Recommended)
 
@@ -222,139 +15,241 @@ Please help me install this skill:
 https://github.com/Mitukasa/info-filter
 ```
 
-Your agent will handle the installation automatically.
-
 ### Method 2: One-Line Command
 
 ```bash
-# Using npx (supports Claude Code, Cursor, and other agents)
 npx skills add Mitukasa/info-filter -g
 
-# Or clone directly to your skills directory
+# Or clone directly
 git clone https://github.com/Mitukasa/info-filter.git ~/.claude/skills/info-filter
 ```
 
-### Method 3: Manual Installation
+### Method 3: Manual
 
 ```bash
-# 1. Clone the repository
 git clone https://github.com/Mitukasa/info-filter.git
-
-# 2. Copy to your Claude Code skills directory
 cp -r info-filter ~/.claude/skills/
-
-# 3. Verify installation
-ls ~/.claude/skills/info-filter/SKILL.md
 ```
 
-### Verification
-
-After installation, the skill should appear in your available skills list. Test it by saying:
-
-```text
-/info-filter
-```
-
-Or trigger it naturally:
-
-```text
-帮我调研一下XXX靠不靠谱
-```
-
-### 使用方式
-
-**方式 1：显式调用**
-```
-/info-filter
-```
-
-**方式 2：自然语言触发**
-- "帮我调研一下 XXX 靠不靠谱"
-- "这个信息是真的吗"
-- "搜索 XXX，注意过滤假信息"
-- "Is this reliable?"
-- "Help me research XXX"
-
-### 与其他 Skill 配合
-
-- **deep-research**: 在 fetch sources 阶段嵌入过滤规则
-- **content-research-writer**: 写作前的事实核查
-- **任何涉及搜索的 skill**: 自动应用信息过滤
+After installation, trigger with `/info-filter` or naturally: `"Help me research if XXX is reliable"`.
 
 ---
 
-## 📊 实测效果对比
+## 🎯 The Problem
 
-我们测试了 3 个典型场景：
+When you ask an AI Agent to research a question, is the answer trustworthy?
 
-### 场景 A：AI 副业月入过万
-- **无过滤**: "有人确实做到了"（暗示可复制）
-- **有过滤**: "大多数人月入<1000 元，90%宣传是幸存者偏差"
+We ran a controlled experiment: asked the same Agent the same question — **"Can you really earn $1,500+/month with AI side hustles?"**
 
-### 场景 B：Cursor 编程效率提升 10 倍
-- **无过滤**: 直接引用"10 倍效率提升"
-- **有过滤**: 标记为"厂商宣传，缺乏独立验证"
+### Without Info Filter:
 
-### 场景 C：Kimi K3 2.8T 参数
-- **无过滤**: 直接引用官方数据
-- **有过滤**: 标注"厂商自报数据，待第三方验证"
+```
+Conclusion: Some people did achieve it, but it's not "easy" or "zero barrier"
+
+Real income data:
+- Zhihu user: $2,000+/month (15+ orders at $140 each)
+- SMZDM user: $600/month initially, scalable to $1,500+
+- Regular users: $700-800/month (4-6 orders)
+
+✅ Viable directions: AI art commissions, AI video production, AI writing...
+
+One-line summary: AI side hustle $1,500+/month is not a myth, but not magically easy either.
+```
+
+**Looks objective? But it has fatal problems:**
+
+1. ❌ **Treats extreme cases as normal** — "$2,000/month" and "$600/month" presented side by side, implying this is common
+2. ❌ **No denominator** — How many people tried? What's the success rate? Never mentioned
+3. ❌ **No source credibility check** — Zhihu personal stories, platform data, and marketing spam mixed together
+4. ❌ **No negative evidence search** — No failure cases, scam reports, or statistical data
+5. ❌ **Overly optimistic conclusion** — "Some people did it" implies it's replicable, when it's actually extremely rare
+
+### With Info Filter:
+
+```
+Bottom line: Very few people achieve this. Most earn under $140/month.
+90%+ of "$1,500+/month" content is marketing or survivorship bias.
+
+📊 Real income data (cross-verified from multiple sources)
+┌────────────────────────┬─────────────────────────┬──────────────────────────┐
+│      Data Source       │      Income Level       │      Credibility         │
+├────────────────────────┼─────────────────────────┼──────────────────────────┤
+│ SMZDM platform data    │ Avg $125/month, 60%+    │ 🟢 High (platform stats) │
+│                        │ under $110              │                          │
+├────────────────────────┼─────────────────────────┼──────────────────────────┤
+│ Zhihu author 1-year    │ $640/month ($7,700/yr)  │ 🟢 High (monthly detail) │
+│ record                 │                         │                          │
+├────────────────────────┼─────────────────────────┼──────────────────────────┤
+│ Blogger 8-month track  │ $110→$480→$1,650→$4,800 │ 🟡 Medium (survivorship  │
+│                        │                         │ bias possible)           │
+├────────────────────────┼─────────────────────────┼──────────────────────────┤
+│ YouTube - $20K/month   │ (DISCARDED)             │ ⚫ Tier D: obvious click- │
+│                        │                         │ bait, no data            │
+└────────────────────────┴─────────────────────────┴──────────────────────────┘
+
+🚩 Survivorship bias detection:
+1. What's the denominator? → SMZDM data: avg $125/month, most earn very little
+2. Where are the failures? → CCTV report: AI training camp scam victims
+3. What's special about success cases? → $4,800/month blogger didn't disclose follower base
+
+📌 Information gaps (honest disclosure):
+- Specific failure rate: No large-scale statistics found
+- Long-term income curve: No 2+ year tracking data available
+```
+
+**Key differences:**
+
+| Dimension | Without Filter | With Filter |
+|-----------|---------------|-------------|
+| **Core conclusion** | "Some people did it" (implies replicable) | "Very few people, most earn <$140/month" |
+| **Data sources** | Mixed, no credibility check | Tiered ratings (A/B/C/D + 🟢🟡🔴⚫) |
+| **Survivorship bias** | Not detected | Actively questions: denominator? failures? special conditions? |
+| **Marketing content** | Not identified | Red flag detection, Tier D content discarded |
+| **Negative evidence** | Not searched | Searched scam reports, failure cases |
+| **Information gaps** | Not disclosed | Honestly states "what we don't know" |
+| **Impact on user** | Potentially misleading | Helps set realistic expectations |
 
 ---
 
-## 🤔 为什么你需要这个 Skill？
+## 🔥 6 Fatal Flaws in Agent Information Search
 
-### 如果你是普通用户：
-- 避免被营销话术误导
-- 获得更真实的调研结论
-- 做出更理性的决策
+### 1️⃣ Polluted by Marketing Spam
 
-### 如果你是内容创作者：
-- 写出的内容更有可信度
-- 避免引用虚假数据被打脸
-- 建立专业形象
+Search engine first 3 pages are full of:
+- SEO content farm mass-produced low-quality articles
+- Advertorials disguised as reviews
+- Clickbait for traffic
 
-### 如果你是企业：
-- 市场调研更准确
-- 竞品分析更客观
-- 决策依据更可靠
+**If agents quote without discrimination, they treat marketing copy as facts.**
 
 ---
 
-## 🛠 技术细节
+### 2️⃣ Information Quoted Without Verification
 
-### 核心能力
+Agents tend to "quote whatever they find", lacking:
+- Multi-source cross-verification
+- Primary data tracing
+- Data credibility assessment
 
-1. **来源分级算法** — 基于域名、作者、发布平台自动判断信任等级
-2. **红旗检测规则** — 12 条营销内容识别规则
-3. **幸存者偏差检测** — 主动搜索反面证据
-4. **数据可信度评分** — 4 级评分系统
-5. **AI 垃圾内容识别** — 检测 SEO 农场批量产出
-
-### 触发条件
-
-Skill 在以下场景自动激活：
-- 使用 WebSearch / WebFetch 查资料并要引用时
-- 帮用户做产品/工具评测、对比时
-- 调研某个技术方案并给出推荐时
-- 任何搜索结果会直接影响用户决策时
+**Case:** A blog claims "300% efficiency improvement", agent quotes directly without asking: What's the test method? Sample size? Baseline comparison?
 
 ---
 
-## 📖 完整文档
+### 3️⃣ Survivorship Bias is Pervasive
 
-详细的规则说明、判断流程、搜索技巧：[SKILL.md](./SKILL.md)
+Search results show far more "success stories" than "failure stories" because:
+- Successful people are more willing to share
+- Failures stay silent
+- Media loves dramatic stories
+
+**If agents don't proactively search for counter-evidence, they reach overly optimistic conclusions.**
 
 ---
 
-## 🤝 贡献
+### 4️⃣ No Source Credibility Differentiation
 
-欢迎提交 Issue 和 PR！
+Agents treat these equally:
+- Official documentation (Tier A)
+- Independent reviews (Tier B)
+- Personal blogs (Tier C)
+- Anonymous posts (Tier D)
 
-特别是：
-- 新的红旗检测规则
-- 更多语言的触发关键词
-- 实际使用案例分享
-- 其他语言的翻译
+**Without grading, users can't tell which information is trustworthy.**
+
+---
+
+### 5️⃣ No Negative Evidence Search
+
+Agents typically do "confirmation search" — stop once they find evidence supporting a viewpoint, never:
+- Proactively search "XX cons"
+- Search "XX failure cases"
+- Search "XX vs competitor" comparisons
+
+**Result: Information asymmetry, conclusions biased to single perspective.**
+
+---
+
+### 6️⃣ Information Gaps Not Transparent
+
+Agents tend to give "seemingly complete" answers, even when:
+- Some data has no primary source
+- Some claims are unverifiable
+- Some areas lack research
+
+**An honest "I don't know" is more valuable than a "seemingly complete but wrong" answer.**
+
+---
+
+## 💡 How Info Filter Works
+
+### 📐 Source Tier System
+
+| Tier | Description | Usage |
+|------|-------------|-------|
+| **A** | Official docs, authoritative media, primary data | Cite directly |
+| **B** | Independent reviews, reputable community discussions | Cross-verify first |
+| **C** | Personal blogs, content farms | Lead only |
+| **D** | Anonymous content, obvious ads | Discard immediately |
+
+### 🚩 Advertorial Red Flag Detection
+
+12 specific red flags (language/structure/technical), ≥2 triggers = classified as marketing:
+- Only praises, zero cons
+- Extreme comparison words without data
+- CTA to join WeChat / get coupons at the end
+- Performance claims without methodology
+- ...
+
+### 📊 Survivorship Bias Detection
+
+Three mandatory questions:
+1. **What's the denominator?** — Success rate = successes / total attempts
+2. **Where are the failures?** — Can't find failure content = information has been filtered
+3. **What's special about this case?** — Is the starting point, resources, timing reproducible?
+
+### 🔢 Data Credibility Scoring
+
+- 🟢 **High confidence** — Tier A source + primary data + cross-verifiable
+- 🟡 **Medium confidence** — Tier B source or indirect data
+- 🔴 **Low confidence** — Tier C source or unverifiable
+- ⚫ **Unreliable** — Tier D source, discard
+
+### 📝 Transparent Output Format
+
+```markdown
+## Research Findings
+
+### Key Discoveries
+- Finding 1 [🟢 High confidence — source: official docs]
+- Finding 2 [🟡 Medium confidence — source: independent review, small sample]
+- Finding 3 [⚠️ Survivorship bias risk — only success cases]
+
+### Source Inventory
+| # | Source | Tier | Confidence | Note |
+|---|--------|------|------------|------|
+| 1 | ...    | A    | 🟢         | ...  |
+| 2 | ...    | D    | ⚫         | Discarded: advertorial |
+
+### Information Gaps (honest disclosure)
+- XXX data — no primary source found
+- XXX claim — could not be verified
+```
+
+---
+
+## 🤔 Who Needs This?
+
+**Regular users:** Avoid being misled by marketing, get more truthful research conclusions, make more rational decisions
+
+**Content creators:** More credible content, avoid citing fake data, build professional image
+
+**Enterprises:** More accurate market research, more objective competitor analysis, more reliable decision basis
+
+---
+
+## 📖 Full Documentation
+
+Detailed rules, decision flowchart, search techniques: [SKILL.md](./SKILL.md)
 
 ---
 
@@ -364,12 +259,21 @@ MIT
 
 ---
 
-## 💬 反馈
+## 🤝 Contributing
 
-如果你在使用过程中发现任何问题，或者有改进建议，欢迎：
-- 提交 [Issue](https://github.com/yourusername/info-filter/issues)
-- 参与 [Discussion](https://github.com/yourusername/info-filter/discussions)
+Issues and PRs welcome! Especially:
+- New red flag detection rules
+- Trigger keywords in more languages
+- Real-world use case sharing
+- Translations
 
 ---
 
-**让 AI Agent 的每一次搜索都更可信。**
+## 💬 Feedback
+
+- Submit an [Issue](https://github.com/Mitukasa/info-filter/issues)
+- Join the [Discussion](https://github.com/Mitukasa/info-filter/discussions)
+
+---
+
+**Make every AI Agent search more credible.**
